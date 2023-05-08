@@ -1,0 +1,17 @@
+/* Wrap text in chat bubbles */
+p.message-bubble {
+    margin: 0;
+    word-break: break-word;
+    white-space: pre-wrap;
+}
+
+/* Time taken */
+p.message-time {
+    margin: 0;
+    align-self: flex-start;
+}
+
+/* Hotel details */
+.details p {
+    margin: 0.5rem;
+}

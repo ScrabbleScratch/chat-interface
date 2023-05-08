@@ -6,10 +6,10 @@ This is a web app chat interface that can be used as a base template to integrat
 > This project was bootstrapped with [Vite](https://vitejs.dev/guide/).
 
 ## Specifications
+- Typescript + WSC
 - React based
+- MaterialUI
 - React redux for state management
-- Typescript anabled
-- MaterialUI enabled
 
 ## Available Scripts
 
