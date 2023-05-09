@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import Box from "@mui/material/Box";
 import FormControl from "@mui/material/FormControl";
 import OutlinedInput from "@mui/material/OutlinedInput";
@@ -20,6 +20,7 @@ type ChatTextBarProps = {
 const ChatTextBar: React.FC<ChatTextBarProps> = (props) => {
     const [value, setValue] = useState("");
     const messages = useAppSelector(selectMessages);
+    const elementRef = useRef<HTMLElement>();
 
     function HandleSend() {
         props.onSend(value);
@@ -59,6 +60,17 @@ const ChatTextBar: React.FC<ChatTextBarProps> = (props) => {
         }
     };
 
+    function handleKeydown() {
+        if (elementRef.current)
+            elementRef.current.focus();
+    }
+
+    useEffect(() => {
+        window.addEventListener("keydown", handleKeydown);
+
+        return () => window.removeEventListener("keydown", handleKeydown);
+    }, []);
+
     return (
         <Box sx={{
                 width: "100%",
@@ -66,7 +78,7 @@ const ChatTextBar: React.FC<ChatTextBarProps> = (props) => {
             }}
         >
             <FormControl fullWidth>
-                <OutlinedInput className="text-input-bar"
+                <OutlinedInput inputRef={elementRef} className="text-input-bar"
                     autoFocus
                     fullWidth
                     placeholder="Ask something..."

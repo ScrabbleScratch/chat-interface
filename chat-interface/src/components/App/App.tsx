@@ -3,6 +3,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 
 import NavBar from "../NavBar/NavBar";
+import AuthBlocker from "../AuthBlocker";
 import Chat from "../Chat";
 
 import "./App.css";
@@ -31,7 +32,9 @@ function App() {
             height: "92.5%",
           }}
         >
-          <Chat />
+          <AuthBlocker label="Enter your name" onSubmit={console.log}>
+            <Chat />
+          </AuthBlocker>
         </Box>
       </Box>
     </ThemeProvider>
